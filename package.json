@@ -1,0 +1,33 @@
+{
+  "name": "fetchival",
+  "version": "0.1.0",
+  "description": "Makes JSON requests with fetch easier",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "uglify": "uglifyjs -m -r fetchival index.js > index.min.js",
+    "size": "uglifyjs  -m -r fetchival index.js | gzip -9f | wc -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/typicode/fetchival.git"
+  },
+  "keywords": [
+    "fetch",
+    "API",
+    "JSON",
+    "REST"
+  ],
+  "author": "Typicode <typicode@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/typicode/fetchival/issues"
+  },
+  "homepage": "https://github.com/typicode/fetchival",
+  "devDependencies": {
+    "uglify-js": "^2.4.20"
+  }
+}
