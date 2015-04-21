@@ -2,7 +2,7 @@
 
 > Make your [fetch](https://github.com/github/fetch) requests dance!
 
-Fetchival is syntactic sugar for JSON requests with [fetch](https://github.com/github/fetch) (it's only 0.5kb min/gz).
+Fetchival is syntactic sugar for JSON requests with [fetch](https://github.com/github/fetch) (0.5kb min/gz).
 
 ![img](http://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Sem_t%C3%ADtulo_holi_festival_colours_2013.jpg/1024px-Sem_t%C3%ADtulo_holi_festival_colours_2013.jpg)
 
