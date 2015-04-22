@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/tests.js",
     "uglify": "uglifyjs -m -r fetchival index.js > index.min.js",
     "size": "uglifyjs  -m -r fetchival index.js | gzip -9f | wc -c"
   },
@@ -28,6 +28,9 @@
   },
   "homepage": "https://github.com/typicode/fetchival",
   "devDependencies": {
+    "chai": "^2.2.0",
+    "mocha": "^2.2.4",
+    "node-fetch": "^1.1.1",
     "uglify-js": "^2.4.20"
   }
 }

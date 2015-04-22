@@ -37,7 +37,7 @@
       opts.body = JSON.stringify(data)
     }
 
-    return fetch(url, opts)
+    return fetchival.fetch(url, opts)
       .then(function (response) {
         if (response.status >= 200 && response.status < 300) {
           return response.json()
@@ -78,6 +78,9 @@
 
     return _
   }
+
+  // Expose fetch so that other polyfills can be used
+  fetchival.fetch = typeof fetch !== 'undefined' ? fetch : null
 
   // Support CommonJS, AMD & browser
   if (typeof exports === 'object')

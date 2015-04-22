@@ -1,8 +1,15 @@
-var assert = chai.assert
-fetchival.mode = 'cors'
+if (typeof window !== 'undefined') {
+  var assert = chai.assert
+  fetchival.mode = 'cors'
+} else {
+  var assert = require('chai').assert
+  var fetchival = require('../')
+  fetchival.fetch = require('node-fetch')
+}
 
 describe('fetchival', function () {
-  this.slow(2000)
+  this.timeout(5000)
+  this.slow(5000)
 
   describe('fetchival(/posts)', function () {
     var posts = fetchival('http://jsonplaceholder.typicode.com/posts')
@@ -68,9 +75,12 @@ describe('fetchival', function () {
     })
 
     it('should #delete()', function (done) {
-      // Actually delete fails on jsonplaceholder because it doesn't return JSON
       posts(1)
         .delete()
+        .then(function (obj) {
+          assert.deepEqual(obj, {})
+          done()
+        })
         .catch(done)
     })
   })
@@ -90,13 +100,12 @@ describe('fetchival', function () {
   })
 
   describe('fetchival(/not/found)', function () {
-    var notFound = fetchival('/not/found')
+    var notFound = fetchival('http://jsonplaceholder.typicode.com/not/found')
 
     it('should fail with 404', function (done) {
       notFound
         .get()
         .catch(function (err) {
-          console.log(err)
           assert.equal(err.response.status, 404)
           done()
         })
