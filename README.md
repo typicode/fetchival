@@ -1,6 +1,6 @@
 # fetchival
 
-> Makes writing JSON requests with [fetch](https://github.com/github/fetch) easier.
+> Makes writing JSON requests with [fetch](https://github.com/github/fetch) easier
 
 ![img](http://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Sem_t%C3%ADtulo_holi_festival_colours_2013.jpg/1024px-Sem_t%C3%ADtulo_holi_festival_colours_2013.jpg)
 
