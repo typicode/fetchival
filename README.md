@@ -51,6 +51,8 @@ fetchival('/users').post({
 
 Fetchival is available on Bower and npm
 
+__Browser__
+
 ```bash
 bower install es6-promise fetch # polyfills
 bower install fetchival
@@ -58,7 +60,13 @@ bower install fetchival
 
 ```bash
 npm install es6-promise whatwg-fetch --save # polyfills
-npm install fetchival --save
+npm install fetchival --save # Browserify
+```
+
+__Node__
+
+```bash
+npm install node-fetch fetchival --save
 ```
 
 ## Usage examples
