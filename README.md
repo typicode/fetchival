@@ -54,7 +54,7 @@ bower install fetchival
 ```
 
 ```bash
-npm install es6-promise whatwg-fetch # polyfills
+npm install es6-promise whatwg-fetch --save # polyfills
 npm install fetchival --save
 ```
 
