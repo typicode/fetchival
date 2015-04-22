@@ -42,6 +42,8 @@ fetchival('/users').post({
 })
 ```
 
+You can also do `.get()`, `.put()`, `.patch()` and `.delete()`
+
 ## Installation
 
 Fetchival is available on Bower and npm (Browserify)
