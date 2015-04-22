@@ -113,6 +113,12 @@ fetchival.mode = 'cors'
 var posts = fetchival('/posts', { mode: 'cors' })
 ```
 
+## Browser Support
+
+![Chrome](https://raw.github.com/alrra/browser-logos/master/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/firefox/firefox_48x48.png) | ![IE](https://raw.github.com/alrra/browser-logos/master/internet-explorer/internet-explorer_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/master/opera/opera_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/safari/safari_48x48.png)
+--- | --- | --- | --- | --- |
+Latest ✔ | Latest ✔ | 9+ ✔ | Latest ✔ | 6.1+ ✔ |
+
 ## Credit
 
 Image by Gianluca Ramalho Misiti (Flickr: sem título-25) [<a href="http://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>], <a href="http://commons.wikimedia.org/wiki/File%3ASem_t%C3%ADtulo_holi_festival_colours_2013.jpg">via Wikimedia Commons</a>
