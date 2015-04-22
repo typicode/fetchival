@@ -59,12 +59,15 @@ npm install fetchival --save
 ## Usage examples
 
 ```javascript
-//posts
+
 var posts = fetchival('/posts')
 
+//posts
 posts.get()
-posts.get({ category: 'javascript' })
 posts.post({ title: 'Fetchival' })
+
+//posts?category=javascript
+posts.get({ category: 'javascript' })
 
 //posts/1
 posts(1).get()
@@ -72,8 +75,9 @@ posts(1).put({ title: 'Fetchival is simple' })
 posts(1).patch({ title: 'Fetchival is simple' })
 posts(1).delete()
 
-//posts/1/comments
 var comments = posts(1, 'comments')
+
+//posts/1/comments
 comments.get()
 
 //posts/1/comments/1
