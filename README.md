@@ -6,9 +6,10 @@ Fetchival is 0.5kb min/gzip and supported on all major browsers (IE9+)
 
 ![img](http://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Sem_t%C3%ADtulo_holi_festival_colours_2013.jpg/1024px-Sem_t%C3%ADtulo_holi_festival_colours_2013.jpg)
 
-### fetch
+### fetch only
 
 ```javascript
+// POST request
 fetch('/users', {
   method: 'post',
   headers: {
@@ -33,8 +34,8 @@ fetch('/users', {
 
 ### fetch + fetchival = <3
 
-
 ```javascript
+// POST request
 fetchival('/users').post({
   name: 'Typicode',
   login: 'typicode'
