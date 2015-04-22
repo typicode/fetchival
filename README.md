@@ -1,6 +1,8 @@
 # fetchival
 
-> Makes writing JSON requests with [fetch](https://github.com/github/fetch) easier (0.5kb min/gzip)
+> Makes writing JSON requests with [fetch](https://github.com/github/fetch) easier 
+
+Fetchival is 0.5kb min/gzip and supported on all major browsers (IE9+)
 
 ![img](http://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Sem_t%C3%ADtulo_holi_festival_colours_2013.jpg/1024px-Sem_t%C3%ADtulo_holi_festival_colours_2013.jpg)
 
