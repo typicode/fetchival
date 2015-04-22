@@ -42,7 +42,7 @@ fetchival('/users').post({
 })
 ```
 
-You can also do `.get()`, `.put()`, `.patch()` and `.delete()`
+`.get()`, `.put()`, `.patch()` and `.delete()` methods are also available.
 
 ## Installation
 
