@@ -2,7 +2,7 @@
 
 > Makes writing JSON requests with [fetch](https://github.com/github/fetch) easier
 
-Fetchival is 0.5kb min/gzip. It can be run in the __browser__ or in __Node__.
+Fetchival is 0.5kb min/gzip. It can be run in the __browser__ and __Node__.
 
 ![img](http://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Sem_t%C3%ADtulo_holi_festival_colours_2013.jpg/1024px-Sem_t%C3%ADtulo_holi_festival_colours_2013.jpg)
 
