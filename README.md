@@ -2,7 +2,7 @@
 
 > Makes writing JSON requests with [fetch](https://github.com/github/fetch) easier
 
-Fetchival is 0.5kb min/gzip. It supports all major browsers (IE9+) and Node.
+Fetchival is 0.5kb min/gzip. It can be run in the browser or Node.
 
 ![img](http://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Sem_t%C3%ADtulo_holi_festival_colours_2013.jpg/1024px-Sem_t%C3%ADtulo_holi_festival_colours_2013.jpg)
 
