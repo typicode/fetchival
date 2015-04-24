@@ -1,6 +1,6 @@
 # fetchival [![](https://travis-ci.org/typicode/fetchival.svg?branch=master)](https://travis-ci.org/typicode/fetchival)
 
-> Makes writing JSON requests with [window.fetch](https://github.com/github/fetch) easier
+> Makes writing JSON requests with [fetch](https://github.com/github/fetch) easier
 
 Fetchival is 0.5kb min/gzip. It supports all major __browsers__ (IE9+) and __Node__.
 
