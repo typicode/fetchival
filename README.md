@@ -1,4 +1,4 @@
-# fetchival [![](https://travis-ci.org/typicode/fetchival.svg?branch=master)](https://travis-ci.org/typicode/fetchival)
+# fetchival.js [![](https://travis-ci.org/typicode/fetchival.svg?branch=master)](https://travis-ci.org/typicode/fetchival)
 
 > Makes writing JSON requests with [fetch](https://github.com/github/fetch) easier
 
