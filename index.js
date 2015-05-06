@@ -80,7 +80,8 @@
   }
 
   // Expose fetch so that other polyfills can be used
-  fetchival.fetch = typeof fetch !== 'undefined' ? fetch : null
+  // Bind fetch to window to avoid TypeError: Illegal invocation
+  fetchival.fetch = typeof fetch !== 'undefined' ? fetch.bind(window) : null
 
   // Support CommonJS, AMD & browser
   if (typeof exports === 'object')
