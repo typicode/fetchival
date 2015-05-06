@@ -1,6 +1,6 @@
 {
   "name": "fetchival",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Makes JSON requests with fetch easier",
   "main": "index.js",
   "directories": {
