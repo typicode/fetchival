@@ -1,18 +1,22 @@
 if (typeof window !== 'undefined') {
   var assert = chai.assert
-  fetchival.mode = 'cors'
 } else {
   var assert = require('chai').assert
   var fetchival = require('../')
   fetchival.fetch = require('node-fetch')
 }
 
+var request = fetchival('http://jsonplaceholder.typicode.com', {
+  mode: 'cors',
+  headers: { 'X-TEST': 'test' }
+})
+
 describe('fetchival', function () {
   this.timeout(5000)
   this.slow(5000)
 
-  describe('fetchival(/posts)', function () {
-    var posts = fetchival('http://jsonplaceholder.typicode.com/posts')
+  describe('request(posts)', function () {
+    var posts = request('posts')
 
     it('should #get()', function (done) {
       posts
@@ -85,9 +89,9 @@ describe('fetchival', function () {
     })
   })
 
-  describe('fetchival(/posts/1/comments)', function () {
-    var posts = fetchival('http://jsonplaceholder.typicode.com/posts')
-    var comments = posts(1, 'comments')
+  describe('request(posts/1/comments)', function () {
+    var posts = request('posts')
+    var comments = posts(1 + '/comments')
 
     it('should #get()', function (done) {
       comments
@@ -99,8 +103,8 @@ describe('fetchival', function () {
     })
   })
 
-  describe('fetchival(/not/found)', function () {
-    var notFound = fetchival('http://jsonplaceholder.typicode.com/not/found')
+  describe('request(not/found)', function () {
+    var notFound = request('not/found')
 
     it('should fail with 404', function (done) {
       notFound

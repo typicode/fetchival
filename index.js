@@ -1,36 +1,27 @@
 ;(function (window) {
 
-  function getURL (args) {
-    return args.filter(function (arg) {
-      return !(arg instanceof Object)
-    }).join('/')
+  function defaults (target, obj) {
+    for (var prop in obj) target[prop] = target[prop] || obj[prop]
   }
 
-  function getOptions (args) {
-    return args.filter(function (arg) {
-      return arg instanceof Object
-    })[0]
-  }
-
-  function getQuery (params) {
-    var arr = Object.keys(params).map(function (k) {
-      return [k, encodeURIComponent(params[k])].join('=')
+  function getQuery (queryParams) {
+    var arr = Object.keys(queryParams).map(function (k) {
+      return [k, encodeURIComponent(queryParams[k])].join('=')
     })
     return ['?'].concat(arr).join('&')
   }
 
-  function _fetch (method, args, data, params) {
-    var opts = getOptions(args) || { mode: fetchival.mode }
-    var url = getURL(args)
-
+  function _fetch (method, url, opts, data, queryParams) {
     opts.method = method
-    opts.headers = {
+    opts.headers = opts.headers || {}
+
+    defaults(opts.headers, {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
-    }
+    })
 
-    if (params) {
-      url += getQuery(params)
+    if (queryParams) {
+      url += getQuery(queryParams)
     }
 
     if (data) {
@@ -48,32 +39,35 @@
       })
   }
 
-  function fetchival () {
-    var slice = Array.prototype.slice
-    var args = slice.call(arguments)
+  function fetchival (url, opts) {
+    opts = opts || {}
 
-    var _ = function () {
-      return fetchival.apply(this, args.concat(slice.call(arguments)))
+    var _ = function (u, o) {
+      // Extend parameters with previous ones
+      u = url + '/' + u
+      o = o || {}
+      defaults(o, opts)
+      return fetchival(u, o)
     }
 
-    _.get = function (params) {
-      return _fetch('GET', args, null, params)
+    _.get = function (queryParams) {
+      return _fetch('GET', url, opts, null, queryParams)
     }
 
     _.post = function (data) {
-      return _fetch('POST', args, data)
+      return _fetch('POST', url, opts, data)
     }
 
     _.put = function (data) {
-      return _fetch('PUT', args, data)
+      return _fetch('PUT', url, opts, data)
     }
 
     _.patch = function (data) {
-      return _fetch('PATCH', args, data)
+      return _fetch('PATCH', url, opts, data)
     }
 
     _.delete = function () {
-      return _fetch('DELETE', args)
+      return _fetch('DELETE', url, opts)
     }
 
     return _

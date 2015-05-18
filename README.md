@@ -89,7 +89,7 @@ posts(1).put({ title: 'Fetchival is simple' })
 posts(1).patch({ title: 'Fetchival is simple' })
 posts(1).delete()
 
-var comments = posts(1, 'comments')
+var comments = posts('1/comments')
 
 //posts/1/comments
 comments.get()
@@ -98,11 +98,11 @@ comments.get()
 comments(1).get()
 ```
 
-To build URLs, you can pass any numbers of arguments
+You can also pass fetch options to `fetchival()`
 
 ```javascript
-fetchival('/posts', 1, 'comments').get()
-fetchival('/posts')(1)('comments').get()
+var posts = fetchival('/posts', fetchOptions)
+var comments = posts('1/comments') // Will inherit fetchOptions
 ```
 
 To catch errors
@@ -118,11 +118,8 @@ fetchival('/posts')
 To enable CORS
 
 ```javascript
-// Globally
-fetchival.mode = 'cors'
-
-// Locally
-var posts = fetchival('/posts', { mode: 'cors' })
+var request = fetchival('/', { mode: 'cors' })
+var posts = request('posts')
 ```
 
 To use fetchival in Node, you need to install `node-fetch` and configure fetchival to use it
