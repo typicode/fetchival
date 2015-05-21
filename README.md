@@ -2,7 +2,7 @@
 
 > Makes writing JSON requests with [fetch](https://github.com/github/fetch) easier
 
-Fetchival is a tiny (0.5kb min/gz) window.fetch wrapper that can be used in the __browser__ (IE9+) and __Node__.
+Fetchival is a tiny (0.5kb min/gz) fetch wrapper that can be used in the __browser__ (IE9+) and __Node__.
 
 ### fetch
 
