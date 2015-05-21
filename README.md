@@ -1,12 +1,8 @@
-# fetchival.js [![](https://travis-ci.org/typicode/fetchival.svg?branch=master)](https://travis-ci.org/typicode/fetchival)
+# fetchival.js [![Travis](https://img.shields.io/travis/typicode/fetchival.svg?style=flat-square)]() [![Bower](https://img.shields.io/bower/v/fetchival.svg?style=flat-square)]()  [![npm](https://img.shields.io/npm/v/fetchival.svg?style=flat-square)]()
 
 > Makes writing JSON requests with [fetch](https://github.com/github/fetch) easier
 
-Fetchival supports all major __browsers__ (IE9+) and __Node__.
-
-It's also Promise based and weighs only 0.5kb min/gz.
-
-![img](http://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Sem_t%C3%ADtulo_holi_festival_colours_2013.jpg/1024px-Sem_t%C3%ADtulo_holi_festival_colours_2013.jpg)
+Fetchival supports all major __browsers__ (IE9+) and __Node__, is Promise based and weighs only 0.5kb min/gz.
 
 ### fetch only
 
@@ -134,10 +130,6 @@ fetchival.fetch = require('node-fetch')
 ![Chrome](https://raw.github.com/alrra/browser-logos/master/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/firefox/firefox_48x48.png) | ![IE](https://raw.github.com/alrra/browser-logos/master/internet-explorer/internet-explorer_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/master/opera/opera_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
 Latest ✔ | Latest ✔ | 9+ ✔ | Latest ✔ | 6.1+ ✔ |
-
-## Credit
-
-Image by Gianluca Ramalho Misiti (Flickr: sem título-25) [<a href="http://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>], <a href="http://commons.wikimedia.org/wiki/File%3ASem_t%C3%ADtulo_holi_festival_colours_2013.jpg">via Wikimedia Commons</a>
 
 ## License
 
