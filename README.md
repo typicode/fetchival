@@ -7,7 +7,7 @@ Fetchival supports all major __browsers__ (IE9+) and __Node__, is Promise based 
 ### fetch only
 
 ```javascript
-// POST request
+// POST /users
 fetch('/users', {
   method: 'post',
   headers: {
@@ -33,7 +33,7 @@ fetch('/users', {
 ### fetch + fetchival = <3
 
 ```javascript
-// POST request
+// POST /users
 fetchival('/users').post({
   name: 'Typicode',
   login: 'typicode'
