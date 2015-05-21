@@ -2,9 +2,9 @@
 
 > Makes writing JSON requests with [fetch](https://github.com/github/fetch) easier
 
-Fetchival supports all major __browsers__ (IE9+) and __Node__, is Promise based and weighs only 0.5kb min/gz.
+Fetchival is a tiny (0.5kb min/gz) window.fetch wrapper that can be used in the __browser__ (IE9+) and __Node__.
 
-### fetch only
+### fetch
 
 ```javascript
 // POST /users
@@ -30,7 +30,7 @@ fetch('/users', {
 })
 ```
 
-### fetch + fetchival = <3
+### fetchival
 
 ```javascript
 // POST /users
