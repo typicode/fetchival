@@ -1,4 +1,4 @@
-# fetchival.js [![Travis](https://img.shields.io/travis/typicode/fetchival.svg?style=flat-square)]() [![Bower](https://img.shields.io/bower/v/fetchival.svg?style=flat-square)]()  [![npm](https://img.shields.io/npm/v/fetchival.svg?style=flat-square)]()
+# fetchival.js [![Travis](https://img.shields.io/travis/typicode/fetchival.svg)](https://travis-ci.org/typicode/fetchival)
 
 > Makes writing JSON requests with [fetch](https://github.com/github/fetch) easier
 
