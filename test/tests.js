@@ -6,17 +6,37 @@ if (typeof window !== 'undefined') {
   fetchival.fetch = require('node-fetch')
 }
 
-var request = fetchival('http://jsonplaceholder.typicode.com', {
+var requestJSON = fetchival('http://jsonplaceholder.typicode.com', {
   mode: 'cors',
   headers: { 'X-TEST': 'test' }
+})
+
+var requestText = fetchival('http://jsonplaceholder.typicode.com', {
+  mode: 'cors',
+  headers: { 'X-TEST': 'test' },
+  responseAs: 'text'
 })
 
 describe('fetchival', function () {
   this.timeout(5000)
   this.slow(5000)
 
-  describe('request(posts)', function () {
-    var posts = request('posts')
+  describe('requestText(posts) [text]', function() {
+      var postsStr = requestText('posts')
+
+      it('should #get()', function(done) {
+          postsStr
+            .get()
+            .then(function (data) {
+                assert(data.substring(0, 1) === '[')
+                done()
+            })
+            .catch(done)
+      })
+  })
+
+  describe('requestJSON(posts) [json]', function () {
+    var posts = requestJSON('posts')
 
     it('should #get()', function (done) {
       posts
@@ -89,8 +109,8 @@ describe('fetchival', function () {
     })
   })
 
-  describe('request(posts/1/comments)', function () {
-    var posts = request('posts')
+  describe('requestJSON(posts/1/comments)', function () {
+    var posts = requestJSON('posts')
     var comments = posts(1 + '/comments')
 
     it('should #get()', function (done) {
@@ -103,8 +123,8 @@ describe('fetchival', function () {
     })
   })
 
-  describe('request(not/found)', function () {
-    var notFound = request('not/found')
+  describe('requestJSON(not/found)', function () {
+    var notFound = requestJSON('not/found')
 
     it('should fail with 404', function (done) {
       notFound
