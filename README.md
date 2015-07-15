@@ -118,6 +118,15 @@ var request = fetchival('/', { mode: 'cors' })
 var posts = request('posts')
 ```
 
+To fetch plain text (for example, HTML views)
+
+```javascript
+var request = fetchival('/', { responseAs: 'text' })
+var posts = request('posts')
+```
+
+`responseAs` must be either `text` or `json` (the default)
+
 To use fetchival in Node, you need to install `node-fetch` and configure fetchival to use it
 
 ```javascript
