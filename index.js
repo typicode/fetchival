@@ -8,7 +8,7 @@
     var arr = Object.keys(queryParams).map(function (k) {
       return [k, encodeURIComponent(queryParams[k])].join('=')
     })
-    return ['?'].concat(arr).join('&')
+    return '?' + arr.join('&')
   }
 
   function _fetch (method, url, opts, data, queryParams) {
