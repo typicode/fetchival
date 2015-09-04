@@ -1,4 +1,4 @@
-;(function (window) {
+(function (window) {
 
   function defaults (target, obj) {
     for (var prop in obj) {
@@ -45,7 +45,7 @@
             })
         } else {
             if (response.status >= 200 && response.status < 300) {
-               return response.json()
+               return response[opts.responseAs]()
             }
 
             var err = new Error(response.statusText)
