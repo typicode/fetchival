@@ -31,14 +31,27 @@
       opts.body = JSON.stringify(data)
     }
 
+    var DEBUG = opts.hasOwnProperty('__FETCHDEBUG__')
+
+    if (DEBUG) {
+        delete opts['__FETCHDEBUG__']
+    }
+
     return fetchival.fetch(url, opts)
       .then(function (response) {
-        if (response.status >= 200 && response.status < 300) {
-          return response[opts.responseAs]()
+        if (DEBUG) {
+            return new Promise(function(res) {
+                res({response: response})
+            })
+        } else {
+            if (response.status >= 200 && response.status < 300) {
+               return response.json()
+            }
+
+            var err = new Error(response.statusText)
+            err.response = response
+            throw err
         }
-        var err = new Error(response.statusText)
-        err.response = response
-        throw err
       })
   }
 
