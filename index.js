@@ -31,7 +31,7 @@
       opts.body = JSON.stringify(data)
     }
 
-    var DEBUG = opts.hasOwnProperty('__FETCHDEBUG__')
+    var DEBUG = opts['__FETCHDEBUG__']
 
     if (DEBUG) {
         delete opts['__FETCHDEBUG__']
