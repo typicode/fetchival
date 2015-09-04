@@ -1,7 +1,9 @@
 ;(function (window) {
 
   function defaults (target, obj) {
-    for (var prop in obj) target[prop] = target[prop] || obj[prop]
+    for (var prop in obj) {
+      target[prop] = target.hasOwnProperty(prop) ? target[prop] : obj[prop];
+    }
   }
 
   function getQuery (queryParams) {
