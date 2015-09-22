@@ -11,7 +11,7 @@
     return '?' + arr.join('&')
   }
 
-  function _fetch (method, url, opts, data, queryParams) {
+  function _fetch (method, url, opts, data, queryParams, errorHandler) {
     opts.method = method
     opts.headers = opts.headers || {}
     opts.responseAs = (opts.responseAs && ['json', 'text'].indexOf(opts.responseAs) >= 0) ? opts.responseAs : 'json'
@@ -36,11 +36,16 @@
         }
         var err = new Error(response.statusText)
         err.response = response
+
+        if(errorHandler) {
+          errorHandler(response)
+        }
+
         throw err
       })
   }
 
-  function fetchival (url, opts) {
+  function fetchival (url, opts, errorHandler) {
     opts = opts || {}
 
     var _ = function (u, o) {
@@ -52,23 +57,24 @@
     }
 
     _.get = function (queryParams) {
-      return _fetch('GET', url, opts, null, queryParams)
+      return _fetch('GET', url, opts, null, queryParams, errorHandler)
     }
 
     _.post = function (data) {
-      return _fetch('POST', url, opts, data)
+      return _fetch('POST', url, opts, data, null, errorHandler)
     }
 
     _.put = function (data) {
-      return _fetch('PUT', url, opts, data)
+      console.log('datadatadatadatadata', data);
+      return _fetch('PUT', url, opts, data, null, errorHandler)
     }
 
     _.patch = function (data) {
-      return _fetch('PATCH', url, opts, data)
+      return _fetch('PATCH', url, opts, data, null, errorHandler)
     }
 
     _.delete = function () {
-      return _fetch('DELETE', url, opts)
+      return _fetch('DELETE', url, opts, null, null, errorHandler)
     }
 
     return _
