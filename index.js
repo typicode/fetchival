@@ -25,9 +25,7 @@
       url += getQuery(queryParams)
     }
 
-    if (data) {
-      opts.body = JSON.stringify(data)
-    }
+    opts.body = data ? JSON.stringify(data) : "";
 
     return fetchival.fetch(url, opts)
       .then(function (response) {
