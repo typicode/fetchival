@@ -3,6 +3,10 @@
   function defaults (target, obj) {
     for (var prop in obj) {
       target[prop] = target.hasOwnProperty(prop) ? target[prop] : obj[prop];
+
+      if (typeof target[prop] === 'undefined') {
+        delete target[prop]
+      }
     }
   }
 
