@@ -17,6 +17,15 @@ var requestText = fetchival('http://jsonplaceholder.typicode.com', {
   responseAs: 'text'
 })
 
+var request_no_ct = fetchival('http://jsonplaceholder.typicode.com', {
+  mode: 'cors',
+  headers: {
+    'X-TEST': 'test',
+    'Content-Type': undefined,
+    '__FETCHDEBUG__': true
+  }
+})
+
 describe('fetchival', function () {
   this.timeout(5000)
   this.slow(5000)
@@ -47,6 +56,18 @@ describe('fetchival', function () {
         })
         .catch(done)
     })
+
+    /*
+    it('should #get() without setting Content-Type', function (done) {
+      request_no_ct('posts')
+        .get()
+        .then(function (response) {
+          assert(!response.headers['X-Inbound-Content-Type'])
+          done()
+        })
+        .catch(done)
+    })
+    */
 
     it('should #get(1)', function (done) {
       posts(1)
