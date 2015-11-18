@@ -14,7 +14,7 @@
   function _fetch (method, url, opts, data, queryParams) {
     opts.method = method
     opts.headers = opts.headers || {}
-    opts.responseAs = (opts.responseAs && ['json', 'text'].indexOf(opts.responseAs) >= 0) ? opts.responseAs : 'json'
+    opts.responseAs = (opts.responseAs && ['json', 'text', 'response'].indexOf(opts.responseAs) >= 0) ? opts.responseAs : 'json'
 
     defaults(opts.headers, {
       'Accept': 'application/json',
@@ -32,7 +32,9 @@
     return fetchival.fetch(url, opts)
       .then(function (response) {
         if (response.status >= 200 && response.status < 300) {
-          return response[opts.responseAs]()
+          if(opts.responseAs=="response")
+            return response
+          return response[opts.responseAs]();
         }
         var err = new Error(response.statusText)
         err.response = response
