@@ -32,6 +32,8 @@
         if (response.status >= 200 && response.status < 300) {
           if(opts.responseAs=="response")
             return response
+          if (response.status == 204)
+            return null;
           return response[opts.responseAs]();
         }
         var err = new Error(response.statusText)
