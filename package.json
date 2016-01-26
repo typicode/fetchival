@@ -1,6 +1,6 @@
 {
   "name": "fetchival-express",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Makes JSON requests with fetch easier",
   "main": "index.js",
   "directories": {
