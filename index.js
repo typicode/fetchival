@@ -25,7 +25,11 @@
       url += getQuery(queryParams)
     }
 
-    opts.body = data ? JSON.stringify(data) : null;
+    if (data) {
+        opts.body = JSON.stringify(data);
+    } else {
+        delete opts.body;
+    }
 
     return fetchival.fetch(url, opts)
       .then(function (response) {
