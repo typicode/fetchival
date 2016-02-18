@@ -1,8 +1,5 @@
 # fetchival.js [![Travis](https://img.shields.io/travis/typicode/fetchival.svg)](https://travis-ci.org/typicode/fetchival)
 
-> **Fork!** 
-> Just added "response" to opts.responseAs property to allow access to response headers
-
 > Makes writing JSON requests with [fetch](https://github.com/github/fetch) easier
 
 Fetchival is a tiny (0.5kb min/gz) fetch wrapper that can be used in the __browser__ (IE9+) and __Node__.
@@ -146,5 +143,3 @@ Latest ✔ | Latest ✔ | 9+ ✔ | Latest ✔ | 6.1+ ✔ |
 ## License
 
 MIT - [Typicode](https://github.com/typicode)
-
-
