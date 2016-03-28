@@ -125,7 +125,7 @@ var request = fetchival('/', { responseAs: 'text' })
 var posts = request('posts')
 ```
 
-`responseAs` must be either `text` or `json` (the default)
+`responseAs` can be `response`, `text` or `json` (default)
 
 To use fetchival in Node, you need to install `node-fetch` and configure fetchival to use it
 
