@@ -17,6 +17,30 @@ var requestText = fetchival('http://jsonplaceholder.typicode.com', {
   responseAs: 'text'
 })
 
+fetchival.responseHandlers['registered-example'] = function(response) {
+  return response.json()
+    .then(function (json) {
+      return {kind: 'registered-example', json: json, response: response}
+    })
+}
+
+var requestRegisteredExample = fetchival('http://jsonplaceholder.typicode.com', {
+  mode: 'cors',
+  headers: { 'X-TEST': 'test' },
+  responseAs: 'registered-example'
+})
+
+var requestCustomExample = fetchival('http://jsonplaceholder.typicode.com', {
+  mode: 'cors',
+  headers: { 'X-TEST': 'test' },
+  responseAs: function(response) {
+    return response.json()
+      .then(function (json) {
+        return {kind: 'custom', json: json, response: response}
+      })
+  }
+})
+
 describe('fetchival', function () {
   this.timeout(5000)
   this.slow(5000)
@@ -135,4 +159,37 @@ describe('fetchival', function () {
         })
     })
   })
+
+  describe('requestCustomExample(posts/1/comments)', function () {
+    var posts = requestCustomExample('posts')
+    var comments = posts(1 + '/comments')
+
+    it('should #get()', function (done) {
+      comments
+        .get()
+        .then(function (extendedReponseObj) {
+          assert.equal('custom', extendedReponseObj.kind)
+          assert(extendedReponseObj.response.ok)
+          assert(extendedReponseObj.json.length)
+          done()
+        })
+    })
+  })
+
+  describe('requestRegisteredExample(posts/1/comments)', function () {
+    var posts = requestRegisteredExample('posts')
+    var comments = posts(1 + '/comments')
+
+    it('should #get()', function (done) {
+      comments
+        .get()
+        .then(function (extendedReponseObj) {
+          assert.equal('registered-example', extendedReponseObj.kind)
+          assert(extendedReponseObj.response.ok)
+          assert(extendedReponseObj.json.length)
+          done()
+        })
+    })
+  })
+
 })

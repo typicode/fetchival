@@ -11,10 +11,18 @@
     return '?' + arr.join('&')
   }
 
+  var responseHandlers = {
+    'json': function(response) { return response.json() },
+    'text': function(response) { return response.text() },
+    'response': true
+  }
   function _fetch (method, url, opts, data, queryParams) {
     opts.method = method
     opts.headers = opts.headers || {}
-    opts.responseAs = (opts.responseAs && ['json', 'text', 'response'].indexOf(opts.responseAs) >= 0) ? opts.responseAs : 'json'
+
+    if (opts.responseAs !== true && typeof opts.responseAs !== 'function') {
+      opts.responseAs = responseHandlers[opts.responseAs] || responseHandlers.json
+    }
 
     defaults(opts.headers, {
       'Accept': 'application/json',
@@ -25,7 +33,7 @@
       url += getQuery(queryParams)
     }
 
-    if (data) {
+    if (data && 'string' !== typeof data) {
         opts.body = JSON.stringify(data);
     } else {
         delete opts.body;
@@ -34,11 +42,11 @@
     return fetchival.fetch(url, opts)
       .then(function (response) {
         if (response.status >= 200 && response.status < 300) {
-          if(opts.responseAs=="response")
+          if(opts.responseAs===true)
             return response
           if (response.status == 204)
             return null;
-          return response[opts.responseAs]();
+          return opts.responseAs(response);
         }
         var err = new Error(response.statusText)
         err.response = response
@@ -83,6 +91,7 @@
   // Expose fetch so that other polyfills can be used
   // Bind fetch to window to avoid TypeError: Illegal invocation
   fetchival.fetch = typeof fetch !== 'undefined' ? fetch.bind(window) : null
+  fetchival.responseHandlers = responseHandlers
 
   // Support CommonJS, AMD & browser
   if (typeof exports === 'object')
