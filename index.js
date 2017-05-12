@@ -72,20 +72,20 @@
       return _fetch('GET', url, opts, null, queryParams)
     }
 
-    _.post = function (data) {
-      return _fetch('POST', url, opts, data)
+    _.post = function (data, queryParams) {
+      return _fetch('POST', url, opts, data, queryParams)
     }
 
-    _.put = function (data) {
-      return _fetch('PUT', url, opts, data)
+    _.put = function (data, queryParams) {
+      return _fetch('PUT', url, opts, data, queryParams)
     }
 
-    _.patch = function (data) {
-      return _fetch('PATCH', url, opts, data)
+    _.patch = function (data, queryParams) {
+      return _fetch('PATCH', url, opts, data, queryParams)
     }
 
-    _.delete = function () {
-      return _fetch('DELETE', url, opts)
+    _.delete = function (queryParams) {
+      return _fetch('DELETE', url, opts, null, queryParams)
     }
 
     return _
