@@ -62,9 +62,13 @@
             return null;
           return opts.responseAs(response);
         }
-        var err = new Error(response.statusText)
-        err.response = response
-        throw err
+        if(typeof opts.errorAs !== 'function') {
+          var err = new Error(response.statusText)
+          err.response = response
+          throw err
+        } else {
+          throw opts.errorAs(response)
+        }
       })
   }
 
