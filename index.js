@@ -12,11 +12,21 @@
     return '?' + arr.join('&')
   }
 
+  function identity(arg) { return arg }
+
   var responseHandlers = {
     'json': function(response) { return response.json() },
     'text': function(response) { return response.text() },
     'response': true
   }
+
+  var encodeHandlers = {
+    'json': JSON.stringify,
+    'noop': identity,
+    true: identity,
+    false: identity,
+  }
+
   function _fetch (method, url, opts, data, queryParams) {
     // Use a shallow copy of opts parameter and opts.header subfield
     opts = defaults({}, opts)
@@ -36,10 +46,11 @@
       url += getQuery(queryParams)
     }
 
-    if (data && 'string' !== typeof data) {
-        opts.body = JSON.stringify(data);
-    } else {
-        delete opts.body;
+    if (data) {
+      if (typeof opts.encodeAs !== 'function') {
+        opts.encodeAs = encodeHandlers[opts.encodeAs] || encodeHandlers.json
+      }
+      opts.body = opts.encodeAs(data)
     }
 
     return fetchival.fetch(url, opts)
@@ -95,6 +106,7 @@
   // Bind fetch to window to avoid TypeError: Illegal invocation
   fetchival.fetch = typeof fetch !== 'undefined' ? fetch.bind(window) : null
   fetchival.responseHandlers = responseHandlers
+  fetchival.encodeHandlers = encodeHandlers
 
   // Support CommonJS, AMD & browser
   if (typeof exports === 'object')
