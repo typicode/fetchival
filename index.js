@@ -2,6 +2,7 @@
 
   function defaults (target, obj) {
     for (var prop in obj) target[prop] = target[prop] || obj[prop]
+    return target
   }
 
   function getQuery (queryParams) {
@@ -17,8 +18,10 @@
     'response': true
   }
   function _fetch (method, url, opts, data, queryParams) {
+    // Use a shallow copy of opts parameter and opts.header subfield
+    opts = defaults({}, opts)
     opts.method = method
-    opts.headers = opts.headers || {}
+    opts.headers = defaults({}, opts.headers || {})
 
     if (opts.responseAs !== true && typeof opts.responseAs !== 'function') {
       opts.responseAs = responseHandlers[opts.responseAs] || responseHandlers.json
