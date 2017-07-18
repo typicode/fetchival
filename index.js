@@ -40,7 +40,7 @@
             return null;
           return response[opts.responseAs]();
         }
-        var err = new Error(response.statusText)
+        var err = new Error(response.statusText || '' + response.status)
         err.response = response
         throw err
       })
