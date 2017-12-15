@@ -6,6 +6,11 @@
 
   function getQuery (queryParams) {
     var arr = Object.keys(queryParams).map(function (k) {
+      if(Array.isArray(queryParams[k])){
+        return queryParams[k].map(function (v) {
+          return k + '[]=' + encodeURIComponent(v)
+        }).join("&")
+      }
       return k + '=' + encodeURIComponent(queryParams[k])
     })
     return '?' + arr.join('&')
