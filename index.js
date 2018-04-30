@@ -26,11 +26,14 @@
     }
 
     if (data) {
-        opts.body = JSON.stringify(data);
+        opts.body = data;
     } else {
         delete opts.body;
     }
 
+    if (data && opts.headers['Content-Type'] == 'application/json')
+      opts.body = JSON.stringify(data);
+    
     return fetchival.fetch(url, opts)
       .then(function (response) {
         if (response.status >= 200 && response.status < 300) {
