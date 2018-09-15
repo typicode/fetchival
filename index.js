@@ -16,10 +16,15 @@
     opts.headers = opts.headers || {}
     opts.responseAs = (opts.responseAs && ['json', 'text', 'response'].indexOf(opts.responseAs) >= 0) ? opts.responseAs : 'json'
 
-    defaults(opts.headers, {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    })
+    var defaultHeaders = {
+      'Accept': 'application/json'
+    };
+
+    if (!!data) {
+      defaultHeaders['Content-Type'] = 'application/json'
+    }
+
+    defaults(opts.headers, defaultHeaders)
 
     if (queryParams) {
       url += getQuery(queryParams)
