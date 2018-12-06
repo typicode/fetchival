@@ -1,4 +1,4 @@
-;(function (window) {
+;(function () {
 
   function defaults (target, obj) {
     for (var prop in obj) target[prop] = target[prop] || obj[prop]
@@ -14,7 +14,7 @@
   function _fetch (method, url, opts, data, queryParams) {
     opts.method = method
     opts.headers = opts.headers || {}
-    opts.responseAs = (opts.responseAs && ['json', 'text', 'response'].indexOf(opts.responseAs) >= 0) ? opts.responseAs : 'json'
+    opts.responseAs = opts.responseAs == 'text' || opts.responseAs == 'response' ? opts.responseAs : 'json';
 
     defaults(opts.headers, {
       'Accept': 'application/json',
@@ -82,7 +82,7 @@
 
   // Expose fetch so that other polyfills can be used
   // Bind fetch to window to avoid TypeError: Illegal invocation
-  fetchival.fetch = typeof fetch !== 'undefined' ? fetch.bind(window) : null
+  fetchival.fetch = typeof fetch != 'undefined' ? fetch.bind(window) : null
 
   // Support CommonJS, AMD & browser
   if (typeof exports === 'object')
@@ -92,4 +92,4 @@
   else
     window.fetchival = fetchival
 
-})(typeof window != 'undefined' ? window : undefined);
+})();

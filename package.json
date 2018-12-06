@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "mocha test/tests.js",
-    "uglify": "uglifyjs -m -r fetchival index.js > index.min.js",
-    "size": "uglifyjs  -m -r fetchival index.js | gzip -9f | wc -c"
+    "uglify": "terser -c passes=2 -m reserved=['fetchival','exports'] -o index.min.js index.js",
+    "size": "terser -c passes=2 -m reserved=['fetchival','exports'] index.js | gzip -9c | wc -c"
   },
   "repository": {
     "type": "git",
@@ -28,9 +28,11 @@
   },
   "homepage": "https://github.com/typicode/fetchival",
   "devDependencies": {
-    "chai": "^2.2.0",
-    "mocha": "^2.2.4",
-    "node-fetch": "^1.1.1",
-    "uglify-js": "^2.4.20"
-  }
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "node-fetch": "^2.3.0",
+    "terser": "^3.11.0"
+  },
+  "dependencies": {},
+  "types": "index.d.ts"
 }
